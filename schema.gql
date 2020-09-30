@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  nearestVendors(latitude: Float!, longitude: Float!): [Vendor!]!
+}
+
+type Vendor {
+  address: String!
+  facilityType: String!
+  id: String!
+  latitude: Float!
+  longitude: Float!
+  name: String!
+}
