@@ -1,0 +1,28 @@
+version: "3"
+services:
+  node:
+    image: node
+    volumes:
+      - type: bind
+        source: .
+        target: /opt/app
+    working_dir: /opt/app
+    ports:
+      - "3000:3000"
+    env_file: .env
+    command: npm run start
+
+  node_dev:
+    image: node
+    volumes:
+      - type: bind
+        source: .
+        target: /opt/app
+    working_dir: /opt/app
+    ports:
+      - "3000:3000"
+    env_file: .env
+    command: npm run start:debug
+
+  dockerize:
+    image: jwilder/dockerize

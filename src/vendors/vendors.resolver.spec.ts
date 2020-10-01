@@ -17,9 +17,9 @@ describe('VendorsResolver', () => {
     service = module.get<VendorsService>(VendorsService);
 
     jest
-      .spyOn(service, 'topFiveVendors')
+      .spyOn(service, 'topVendors')
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .mockImplementation((lat: number, lng: number) => {
+      .mockImplementation((lat: number, lng: number, size: number) => {
         const vendorsList = [
           {
             id: '1',

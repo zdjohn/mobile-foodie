@@ -10,9 +10,10 @@ export class VendorsResolver {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @Query(_return => [Vendor])
   async nearestVendors(@Args() latlng: LatLng) {
-    return this.vendorsService.topFiveVendors(
+    return this.vendorsService.topVendors(
       latlng.latitude,
       latlng.longitude,
+      latlng.size || 5,
     );
   }
 }

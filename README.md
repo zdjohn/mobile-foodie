@@ -1,49 +1,99 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This GraphQL API returns top 5 food trucks based on the given latitude and longitude. A csv dump of the latest San Francisco's food truck open dataset is saved as release.csv in the repo. (ref: https://data.sfgov.org/api/views/rqzj-sfat/rows.csv)
 
-## Installation
+## Prerequisites
 
-```bash
-$ npm install
-```
+- [Docker](https://www.docker.com/)
+- [Compose](https://docs.docker.com/compose/)
+- [Make](https://www.gnu.org/software/make/)
+- [NodeJs](https://nodejs.org/en/)
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# start app with docker-compose
+$ make dev-start
+# tear down the running app
+$ make teardown
 ```
 
-## Test
+GraphQL playground would be ready at: http://localhost:3000/graphql check out the [sample query](#Query-Sample) below
+
+## Development
 
 ```bash
-# unit tests
-$ npm run test
+# set environment variable settings
+$ make setenv ENVFILE=.env.dev
 
-# e2e tests
-$ npm run test:e2e
+# start app (watch and debug mode)
+# alternatively you can also use $ npm run start:dev
+$ make dev-watch
 
-# test coverage
-$ npm run test:cov
+# running unit test
+$ make unittest
+
+# tear down all running app
+$ make teardown
+
+# clean up generated folders and files
+$ make clean
 ```
 
-## Support
+alternatively, please checkout `package.json` for more npm options.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Deployment
 
-## Stay in touch
+```bash
+# sets environment variables (e.g. for release)
+$ make release ENVFILE=.env.release
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+now the dockerized app is ready to go via `docker run --rm -it -p 3000:3000 mobile-foodie`
 
-## License
+## Demo
 
-Nest is [MIT licensed](LICENSE).
+### Query Sample
+
+```json
+{
+  nearestVendors(
+    latitude: 37.7875398934675,
+    longitude: -122.397726709152) {
+    name
+    id
+    latitude
+    longitude
+    address
+    facilityType
+  }
+}
+```
+
+### Response Sample
+
+```json
+{
+  "data": {
+    "nearestVendors": [
+      {
+        "name": "Street Meet",
+        "id": "1447794",
+        "latitude": 37.7875398934675,
+        "longitude": -122.397726709152,
+        "address": "564 HOWARD ST",
+        "facilityType": "Truck"
+      },
+      {
+        "name": "Star Taco",
+        "id": "1367290",
+        "latitude": 37.7873042488646,
+        "longitude": -122.398037251912,
+        "address": "580 HOWARD ST",
+        "facilityType": ""
+      },
+      ...
+    ]
+  }
+}
+```

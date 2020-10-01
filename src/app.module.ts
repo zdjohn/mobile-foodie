@@ -14,7 +14,6 @@ import { HealthController } from './health/health.controller';
     }),
     VendorsModule,
   ],
-  providers: [],
   controllers: [HealthController],
 })
 export class AppModule {}

@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Query {
-  nearestVendors(latitude: Float!, longitude: Float!): [Vendor!]!
+  nearestVendors(latitude: Float!, longitude: Float!, size: Int = 5): [Vendor!]!
 }
 
 type Vendor {

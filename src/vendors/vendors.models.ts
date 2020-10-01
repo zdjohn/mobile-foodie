@@ -32,6 +32,18 @@ export class Vendor {
   longitude: number;
 }
 
+@ArgsType()
+export class LatLng {
+  @Field(type => Float)
+  longitude: number;
+
+  @Field(type => Float)
+  latitude: number;
+
+  @Field(type => Int, { nullable: true, defaultValue: 5 })
+  size?: number;
+}
+
 export type VendorRaw = {
   locationid: string;
   Applicant: string;
@@ -40,12 +52,3 @@ export type VendorRaw = {
   Longitude: string;
   FacilityType: string;
 };
-
-@ArgsType()
-export class LatLng {
-  @Field(type => Float)
-  longitude: number;
-
-  @Field(type => Float)
-  latitude: number;
-}

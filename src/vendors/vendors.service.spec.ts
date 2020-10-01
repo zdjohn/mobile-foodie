@@ -29,7 +29,7 @@ describe('CsvStoreService', () => {
     await service.onModuleInit();
     expect(service.vendorsStore.length).toBeGreaterThan(0);
 
-    const vendors = await service.topFiveVendors(
+    const vendors = await service.topVendors(
       37.7875398934675,
       -122.397726709152,
     );

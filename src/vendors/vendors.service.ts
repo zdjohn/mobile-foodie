@@ -31,11 +31,11 @@ export class VendorsService implements OnModuleInit {
     return distance_a >= distance_b ? 1 : -1;
   };
 
-  async topFiveVendors(lat: number, lng: number): Promise<Vendor[]> {
+  async topVendors(lat: number, lng: number, size = 5): Promise<Vendor[]> {
     if (!this.vendorsStore) return [];
     return this.vendorsStore
       .sort((a, b) => this.sortByLatLng(lat, lng, a, b))
-      .slice(0, 5);
+      .slice(0, size);
   }
 
   async initCsvStore() {
