@@ -16,6 +16,9 @@ This GraphQL API returns top 5 food trucks based on the given latitude and longi
 $ make dev-start
 # tear down the running app
 $ make teardown
+
+# to run a clean pre-deployment test build
+$ make testbuild
 ```
 
 GraphQL playground would be ready at: http://localhost:3000/graphql check out the [sample query](#Query-Sample) below
@@ -26,8 +29,8 @@ GraphQL playground would be ready at: http://localhost:3000/graphql check out th
 # set environment variable settings
 $ make setenv ENVFILE=.env.dev
 
-# start app (watch and debug mode)
-# alternatively you can also use $ npm run start:dev
+# start app
+# this will install required dependency, then run app in (watch and debug mode
 $ make dev-watch
 
 # running unit test
@@ -55,7 +58,7 @@ now the dockerized app is ready to go via `docker run --rm -it -p 3000:3000 mobi
 
 ### Query Sample
 
-```json
+```query
 {
   nearestVendors(
     latitude: 37.7875398934675,
@@ -72,7 +75,7 @@ now the dockerized app is ready to go via `docker run --rm -it -p 3000:3000 mobi
 
 ### Response Sample
 
-```json
+```response
 {
   "data": {
     "nearestVendors": [
