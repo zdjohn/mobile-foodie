@@ -1,4 +1,4 @@
-ENVFILE ?= .env.release
+ENVFILE ?= .env.dev
 COMPOSE_RUN_NODE = docker-compose run --rm node
 COMPOSE_UP_NODE = docker-compose up -d node
 COMPOSE_UP_NODE_DEV = docker-compose up node_dev
@@ -40,10 +40,10 @@ teardown:
 clean:
 	$(COMPOSE_RUN_NODE) rm -fr node_modules dist coverage
 	$(MAKE) teardown
-	rm -f .env
+	# rm -f .env
 
 deploy:
 	#build docker image
 	docker build -t mobile-foodie .
 	# below would depending on the hosting infrstrucutre provider
-	# i.e. push image to Azure Container Registry, then Deploy a container instance in Azure using the Azure CLI
+	# i.e. push image to Azure Container Registry, then deploy the container instance in Azure using the Azure CLI

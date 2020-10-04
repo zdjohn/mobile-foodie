@@ -1,0 +1,12 @@
+POST http://localhost:3000/graphql HTTP/1.1
+content-type: application/json
+
+{
+    "operationName":"vendors",
+    "variables":{
+        "latitude": 37.7875398934675,
+        "longitude": -122.397726709152,
+        "size": 5
+    },
+    "query":"query vendors($latitude:Float!, $longitude:Float!, $size:Int=5) {\n  nearestVendors(latitude: $latitude, longitude: $longitude, size: $size) {\n    name\n    id\n    latitude\n    longitude\n    address\n    facilityType\n  }\n}\n"
+}

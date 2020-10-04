@@ -1,6 +1,6 @@
 ## Description
 
-This GraphQL API returns top 5 food trucks based on the given latitude and longitude. A csv dump of the latest San Francisco's food truck open dataset is saved as release.csv in the repo. (ref: https://data.sfgov.org/api/views/rqzj-sfat/rows.csv)
+This GraphQL API returns top 5 food trucks based on the given latitude and longitude. A csv dump of the latest San Francisco's food truck open dataset is saved as `release.csv` in the repo. (ref: https://data.sfgov.org/api/views/rqzj-sfat/rows.csv)
 
 ## Prerequisites
 
@@ -52,11 +52,30 @@ alternatively, please checkout `package.json` for more npm options.
 $ make release ENVFILE=.env.release
 ```
 
-now the dockerized app is ready to go via `docker run --rm -it -p 3000:3000 mobile-foodie`
+now the dockerized app is ready to go via:
+
+`docker run --rm -it -p 3000:3000 mobile-foodie`
+
+NOTE: GraphQL playground would be disabled under release mode.
 
 ## Demo
 
 ### Query Sample
+
+```http
+POST http://localhost:3000/graphql HTTP/1.1
+content-type: application/json
+
+{
+    "operationName":"vendors",
+    "variables":{
+        "latitude": 37.7875398934675,
+        "longitude": -122.397726709152,
+        "size": 5
+    },
+    "query":"query vendors($latitude:Float!, $longitude:Float!, $size:Int=5) {\n  nearestVendors(latitude: $latitude, longitude: $longitude, size: $size) {name\n id\n latitude\n longitude\n address\n facilityType\n}}"
+}
+```
 
 ```query
 {
