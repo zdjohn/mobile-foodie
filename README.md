@@ -43,7 +43,7 @@ $ make teardown
 $ make clean
 ```
 
-alternatively, please checkout `package.json` for more npm options.
+alternatively, please checkout [package.json](https://github.com/zdjohn/mobile-foodie/blob/master/package.json) for npm based options. (no docker required, in this case)
 
 ## Deployment
 
@@ -60,7 +60,7 @@ NOTE: GraphQL playground would be disabled under release mode.
 
 ## Demo
 
-### Query Sample
+### Query Sample [vendors_query.http](https://github.com/zdjohn/mobile-foodie/blob/master/vendors_query.http)
 
 ```http
 POST http://localhost:3000/graphql HTTP/1.1
