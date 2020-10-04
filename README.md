@@ -21,7 +21,7 @@ $ make teardown
 $ make testbuild
 ```
 
-GraphQL playground would be ready at: http://localhost:3000/graphql check out the [sample query](#Query-Sample) below
+GraphQL playground would be ready at: http://localhost:3000/graphql check out the [sample query](#Demo) below
 
 ## Development
 
