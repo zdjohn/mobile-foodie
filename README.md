@@ -5,7 +5,7 @@ This GraphQL API returns top 5 food trucks based on the given latitude and longi
 ## Prerequisites
 
 - [Docker](https://www.docker.com/)
-- [Compose](https://docs.docker.com/compose/)
+- [Docker Compose](https://docs.docker.com/compose/)
 - [Make](https://www.gnu.org/software/make/)
 - [NodeJs](https://nodejs.org/en/)
 
@@ -27,7 +27,7 @@ GraphQL playground would be ready at: http://localhost:3000/graphql check out th
 
 ```bash
 # set environment variable settings
-$ make setenv ENVFILE=.env.dev
+$ make envset ENVFILE=.env.dev
 
 # start app
 # this will install required dependency, then run app in (watch and debug mode
