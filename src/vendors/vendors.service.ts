@@ -21,7 +21,8 @@ export class VendorsService implements OnModuleInit {
 
   getDistanceScore = (x_lat, x_lng, y_lat, y_lng): number => {
     return (
-      Math.sqrt(Math.abs(x_lat - y_lat)) + Math.sqrt(Math.abs(x_lng - y_lng))
+      Math.pow(Math.abs(x_lat - y_lat), 2) +
+      Math.pow(Math.abs(x_lng - y_lng), 2)
     );
   };
 
